@@ -1,21 +1,21 @@
-import { LoginForm } from "@/components/login-form"
+import { AccountRecoveryForm } from "@/components/account-recovery-form"
 import Image from "next/image"
 
 export default function LoginPage() {
 	return (
 		<div className="grid min-h-svh lg:grid-cols-2 p-6">
-			<div className="flex flex-1 items-center justify-center">
-				<div className="w-full h-full bg-white p-8 border shadow-md">
-					<LoginForm />
+			<div className="flex flex-1 items-center justify-center shadow-md">
+				<div className="w-full h-full bg-white p-8 border">
+					<AccountRecoveryForm />
 				</div>
 			</div>
-			<div className="relative hidden overflow-hidden bg-muted lg:block">
+			<div className="relative hidden overflow-hidden bg-muted lg:block shadow-md">
 				<div className="absolute w-full h-full bg-gradient-to-t from-primary to-transparent z-10" />
 				<Image
 					src="/neust.png"
 					width={1477}
 					height={1108}
-					alt="Image"
+					alt="NEUST General Tinio Campus"
 					className="absolute inset-0 h-full w-[120%] object-cover dark:brightness-[0.2] dark:grayscale"
 				/>
 				<div className="absolute left-0 bottom-0 p-6 z-10">

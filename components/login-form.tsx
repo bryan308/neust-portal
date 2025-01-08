@@ -9,6 +9,14 @@ import { Badge } from "./ui/badge"
 import Image from "next/image"
 import { useId, useState } from "react"
 import Link from "next/link"
+import {
+	Dialog,
+	DialogContent,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
+} from "@/components/ui/dialog"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 
 export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRef<"form">) {
 	const id = useId()
@@ -18,7 +26,7 @@ export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRe
 
 	return (
 		<form
-			className={cn("flex flex-col justify-center gap-6 max-w-md mx-auto h-full", className)}
+			className={cn("flex flex-col justify-center gap-6 max-w-xs mx-auto h-full", className)}
 			{...props}
 		>
 			<Badge
@@ -61,7 +69,15 @@ export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRe
 					/>
 				</div>
 				<div className="grid gap-2">
-					<Label htmlFor="password">Password</Label>
+					<div className="flex justify-between items-center">
+						<Label htmlFor="password">Password</Label>
+						<Link
+							href="/account-recovery"
+							className="text-sm text-primary hover:underline underline-offset-4"
+						>
+							Forgot password?
+						</Link>
+					</div>
 					<div className="relative">
 						<Input
 							id={id}
@@ -91,12 +107,6 @@ export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRe
 							)}
 						</button>
 					</div>
-					<Link
-						href="/account-recovery"
-						className="text-sm text-primary text-right underline underline-offset-4"
-					>
-						Forgot password?
-					</Link>
 				</div>
 				<Button
 					type="submit"
@@ -107,12 +117,55 @@ export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRe
 			</div>
 			<div className="text-center text-sm">
 				Not yet Registered?{" "}
-				<Link
-					href="/register"
-					className="underline underline-offset-4"
-				>
-					Click Here
-				</Link>
+				<Dialog>
+					<DialogTrigger>Click Here</DialogTrigger>
+					<DialogContent>
+						<DialogHeader>
+							<DialogTitle>Registration (For College or Masters Graduate)</DialogTitle>
+						</DialogHeader>
+						<RadioGroup
+							className="gap-2"
+							defaultValue="1"
+						>
+							<div className="relative flex w-full items-start gap-2 rounded-lg border border-input p-4 shadow-sm shadow-black/5 has-[[data-state=checked]]:border-ring">
+								<RadioGroupItem
+									value="1"
+									id={`${id}-1`}
+									aria-describedby={`${id}-1-description`}
+									className="order-1 after:absolute after:inset-0"
+								/>
+								<div className="grid grow gap-2">
+									<Label htmlFor={`${id}-1`}>New Graduate School Student</Label>
+								</div>
+							</div>
+							<div className="relative flex w-full items-start gap-2 rounded-lg border border-input p-4 shadow-sm shadow-black/5 has-[[data-state=checked]]:border-ring">
+								<RadioGroupItem
+									value="2"
+									id={`${id}-2`}
+									aria-describedby={`${id}-2-description`}
+									className="order-1 after:absolute after:inset-0"
+								/>
+								<div className="grid grow gap-2">
+									<Label htmlFor={`${id}-2`}>
+										New Certificate in Professional Teaching Education Student
+									</Label>
+								</div>
+							</div>
+							<div className="relative flex w-full items-start gap-2 rounded-lg border border-input p-4 shadow-sm shadow-black/5 has-[[data-state=checked]]:border-ring">
+								<RadioGroupItem
+									value="3"
+									id={`${id}-3`}
+									aria-describedby={`${id}-3-description`}
+									className="order-1 after:absolute after:inset-0"
+								/>
+								<div className="grid grow gap-2">
+									<Label htmlFor={`${id}-3`}>New Certificate in Physical Education Student</Label>
+								</div>
+							</div>
+						</RadioGroup>
+						<Button>Submit</Button>
+					</DialogContent>
+				</Dialog>
 			</div>
 		</form>
 	)
