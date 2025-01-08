@@ -5,7 +5,7 @@ Improving our school portal with a modern and responsive design.
 
 Checkout live preview here 👉 [Deployment Link](https://neust.vercel.app)
 
-## old
+## Current
 
 ![alt text](/public/image-1.png)
 
